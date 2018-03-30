@@ -1,3 +1,7 @@
+function $(className) {
+  return document.getElementsByClassName(className);
+}
+
 function getBetTitle(betCard)
 {
   return getCards()[betCard].firstChild.innerHTML;
@@ -32,7 +36,7 @@ function whatIsSelected(betCard)
 
 function getCards()
 {
-  return document.getElementsByClassName('bet-card');
+  return $('bet-card');
 }
 
 function isPlaced(betCard)
@@ -90,17 +94,11 @@ function bet(opt)
   }
 }
 
-function offPanel()
-{
-    document.getElementsByClassName('content-panel')[0].innerHTML = "";
-    console.log("Panel turned off.");
-}
-
 function openCrate()
 {
-  var open = document.getElementsByClassName('open-button');
-  var openCrate = document.getElementsByClassName('open-crate-button');
-  var cont = document.getElementsByClassName('continue-button');
+  var open = $('open-button');
+  var openCrate = $('open-crate-button');
+  var cont = $('continue-button');
 
   if (open.length != 0)
     {
@@ -119,8 +117,40 @@ function openCrate()
     }
 }
 
+function style()
+{
+  contentPanel = $('content-panel')[0];
+  miniGamePanel = $('mini-game-panel')[0];
+
+  rafflePrizes = $('prize-container');
+  fixedWallet = $('fixed-wallet')[0];
+
+  betCards = $('bet-card');
+
+  contentPanel.innerHTML = "";
+  fixedWallet.innerHTML = "";
+  miniGamePanel.style.flexBasis = "100%";
+
+  //bet cards
+  for (let i = 0; i < betCards.length; i++)
+  {
+    centerize(betCards[i]);
+  }
+
+  for (let i = 0; i < rafflePrizes.length; i++)
+  {
+    centerize(rafflePrizes[i]);
+  }
+}
+
+function centerize(array)
+{
+  array.classList.add("center");
+}
+
 setInterval(function()
 {
+    style()
     bet("A");
     openCrate();
 }, 1000);
