@@ -10,3 +10,5 @@ This script was tested on **Firefox** and **Chrome**.
 4. In the end of the script you will find a bet() function. If you would like the bet on only yes answer ("A" or "Y"), write **bet("A")** there.
 5. Restart your browser.
 6. Done.
+
+[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](http://paypal.me/janoshrubos)
